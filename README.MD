@@ -34,7 +34,7 @@ The uniqueness is only as good as your pseudorandom number generator, so there a
 
 ## Checksum UUIDs
 
-Some GEDCOM implementations support UUID-based IDs (an extension to the standard), and some of those relace the last 32 bits with a CRC-32 _checksum_ of the data in the identified element. XarkIds may be used for this purpose since these standards only modify bits that would otherwise be random in XarkIds. This reduces the entropy somewhat, but still provides 40 bits of randomness for each millisecond, which is still plenty.
+Some GEDCOM implementations support UUID-based IDs (an extension to the standard), and some of those replace the last 32 bits with a CRC-32 _checksum_ of the data in the identified element. XarkIds may be used for this purpose since these standards only modify bits that would otherwise be random in XarkIds. This reduces the entropy somewhat, but still provides 40 bits of randomness for each millisecond, which is still plenty.
 
 That said, care should be taken to only do this for IDs that are _intended_ to change over time, such as revision IDs, rather than as the primary ID for an entity.
 
@@ -50,6 +50,7 @@ GUID-encoded XarkIds will sort in order of creation (within the resolution of th
 | ---------- | ------- | ----------------------------- |
 | 2017.07.11 | 1.0.0   | First version                 |
 | 2021.01.03 | 2.0.0   | .NET 5, documentation rewrite |
+| 2023.01.04 | 2.0.1   | .NET 7                        |
 
 ## License
 

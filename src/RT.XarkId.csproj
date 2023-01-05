@@ -1,16 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<Description>Library to create 120-bit XarkIds and convert them from and to GUIDs.</Description>
-		<Copyright>Copyright 2017-2021 Richard S. Tallent</Copyright>
+		<Copyright>Copyright 2017-2023 Richard S. Tallent</Copyright>
 		<AssemblyTitle>RT.XarkId</AssemblyTitle>
-		<VersionPrefix>2.0</VersionPrefix>
+		<Version>2.0.1</Version>
 		<Authors>Richard Tallent</Authors>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<AssemblyName>RT.XarkId</AssemblyName>
 		<PackageId>RT.XarkId</PackageId>
-		<PackageTags>.NET5 dotnet5 Comb GUID GEDCOM Genealogy uniqueidentifier UUID</PackageTags>
+		<PackageTags>.NET7 dotnet7 Comb GUID GEDCOM Genealogy uniqueidentifier UUID</PackageTags>
 		<PackageProjectUrl>https://github.com/richardtallent/RT.XarkId</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/richardtallent/RT.XarkId</RepositoryUrl>
+		<LangVersion>11</LangVersion>
 	</PropertyGroup>
 </Project>

@@ -2,7 +2,7 @@ using System;
 using RT;
 using Xunit;
 /*
-	Copyright 2017-2021 Richard S. Tallent, II
+	Copyright 2017-2023 Richard S. Tallent, II
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files
 	(the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
@@ -20,10 +20,7 @@ using Xunit;
 namespace test {
 	public class UnitTest1 {
 
-		private XarkId EmptyXarkId() {
-			var u = new RT.XarkId(Guid.Empty);
-			return u;
-		}
+		private static XarkId EmptyXarkId() => new(Guid.Empty);
 
 		[Fact]
 		public void TestEmptyXarkId() {

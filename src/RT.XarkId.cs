@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 /*
-	Copyright 2017-2021 Richard S. Tallent, II
+	Copyright 2017-2023 Richard S. Tallent, II
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files
 	(the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
@@ -22,17 +22,16 @@ namespace RT {
 	[System.Runtime.InteropServices.ComVisible(true)]
 	public class XarkId : IComparable, IComparable<XarkId>, IEquatable<XarkId> {
 
-		private byte[] bytes = new byte[15];
-		private static DateTime MinDateTimeValue { get => new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc); }
-		private static Random rnd = new Random();
+		private readonly byte[] bytes = new byte[15];
+		private readonly static Random Rnd = new();
 
 		public XarkId() {
 			bytes = new byte[15];
 			SetTimestamp(DateTime.UtcNow);
-			rnd.NextBytes(new Span<byte>(bytes, 6, 9));
+			Rnd.NextBytes(new Span<byte>(bytes, 6, 9));
 		}
 
-		private XarkId(byte[] value) {
+		public XarkId(byte[] value) {
 			if (value == null) throw new ArgumentNullException(nameof(value));
 			if (value.Length != 16)
 				throw new ArgumentException($"Cannot convert byte[{value.Length}] to byte[16]");
@@ -85,7 +84,7 @@ namespace RT {
 				+ ((long)bytes[2] << 24)
 				+ ((long)bytes[3] << 16)
 				+ ((long)bytes[4] << 8)
-				+ ((long)bytes[5]);
+				+ bytes[5];
 			return DateTimeOffset.FromUnixTimeMilliseconds(unix).UtcDateTime;
 		}
 
@@ -124,7 +123,7 @@ namespace RT {
 			{
 				"b" => string.Join(' ', from b in bytes select b.ToString("x2")),
 				"g" => ToGuid().ToString("d"),
-				_ => System.Convert.ToBase64String(bytes)
+				_ => Convert.ToBase64String(bytes)
 					.Replace('+', '-').Replace('/', '_')    // Base64Url alternate characters
 					[..20]                                  // remove any trailing `=` padding
 			};
