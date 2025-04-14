@@ -1,8 +1,10 @@
 using System;
+
 using RT;
+
 using Xunit;
 /*
-	Copyright 2017-2023 Richard S. Tallent, II
+	Copyright 2017-2025 Richard S. Tallent, II
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files
 	(the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
@@ -43,21 +45,58 @@ namespace test {
 
 		[Fact]
 		public void RoundTrip() {
-			for (var x = 1; x < 100; x++) {
-				var g1 = new RT.XarkId();
+			for(var x = 1; x < 100; x++) {
+				var g1 = new XarkId();
 				var gs = g1.ToString();
-				var g2 = new RT.XarkId(gs);
+				var g2 = new XarkId(gs);
 				Assert.Equal(g1, g2);
 			}
 		}
 
 		[Fact]
 		public void StartsWithLetter() {
-			for (var x = 1; x < 100; x++) {
-				var g1 = new RT.XarkId();
+			for(var x = 1; x < 100; x++) {
+				var g1 = new XarkId();
 				var gs = g1.ToString();
 				Assert.Matches("^[A-Za-z]", gs);
 			}
+		}
+
+		[Fact]
+		public void TestTimestamp() {
+			var now = DateTime.UtcNow;
+			var xarkId = new XarkId();
+			xarkId.SetTimestamp(now);
+			var retrievedTimestamp = xarkId.GetTimestamp();
+			// Check that the difference between the timestamps is less than or equal to 1 millisecond
+			Assert.Equal(0, (retrievedTimestamp - now).Duration().Milliseconds);
+		}
+
+		[Fact]
+		public void TestBinaryConversion() {
+			var xarkId = new XarkId();
+			var binary = xarkId.ToBinary();
+			Assert.Equal(15, binary.Length);
+		}
+
+		[Fact]
+		public void TestEquality() {
+			var xarkId1 = new XarkId();
+			var xarkId2 = new XarkId(xarkId1.ToString());
+			Assert.Equal(xarkId1, xarkId2);
+		}
+
+		[Fact]
+		public void TestComparison() {
+			var xarkId1 = new XarkId();
+			var xarkId2 = new XarkId();
+			Assert.NotEqual(0, xarkId1.CompareTo(xarkId2));
+		}
+
+		[Fact]
+		public void TestInvalidInput() {
+			Assert.Throws<ArgumentException>(() => new XarkId("InvalidString"));
+			Assert.Throws<ArgumentNullException>(() => new XarkId((byte[]) null));
 		}
 
 	}

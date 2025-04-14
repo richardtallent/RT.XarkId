@@ -3,21 +3,18 @@
 	<PropertyGroup>
 		<AssemblyTitle>RT.XarkId.Tests</AssemblyTitle>
 		<VersionPrefix>2.0</VersionPrefix>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<DebugType>portable</DebugType>
 		<AssemblyName>RT.XarkId.Tests</AssemblyName>
 		<PackageId>RT.XarkId.Tests</PackageId>
 		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="../src/RT.XarkId.csproj" />
 	</ItemGroup>
-
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
-		<PackageReference Include="xunit" Version="2.4.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.0.2" />
+		<PackageReference Include="xunit" Version="2.9.3" />
 	</ItemGroup>
-
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+
 using RT;
 /*
 	Copyright 2017-2021 Richard S. Tallent, II
@@ -36,7 +37,7 @@ class GetXarkId {
 
 		XarkId x;
 
-		if (args.Length == 0) {
+		if(args.Length == 0) {
 			Console.WriteLine("Creating...");
 			x = new XarkId();
 		} else {
@@ -45,7 +46,7 @@ class GetXarkId {
 				x = new XarkId(args[0]);
 			} catch {
 				Console.WriteLine("Not a valid XARK ID.");
-				return (int)ExitCode.Error;
+				return (int) ExitCode.Error;
 			}
 		}
 
@@ -53,7 +54,7 @@ class GetXarkId {
 		Console.WriteLine(x.ToString("b"));
 		Console.WriteLine(x.ToString("g"));
 		Console.WriteLine(x.GetTimestamp());
-		return (int)ExitCode.Success;
+		return (int) ExitCode.Success;
 
 	}
 
